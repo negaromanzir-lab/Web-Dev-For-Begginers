@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Neon Button</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #202035;
+        }
+
+        .button {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: clamp(50px, 8vw, 70px);
+            width: clamp(150px, 30vw, 200px);
+            color: #ddd;
+            font-size: clamp(18px, 5vw, 26px);
+            font-weight: 800;
+            padding: clamp(5px, 2vw, 10px);
+            border: 3px solid #ff0054;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .button span,
+        .button::before {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .button:hover {
+            background: #ff0054;
+            box-shadow: 0 0 40px #ff0054;
+        }
+
+        .button::before {
+            content: attr(data-hover);
+            position: absolute;
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+
+        .button:hover::before {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .button:hover span {
+            opacity: 0;
+            transform: translateY(50%);
+        }
+
+        @media (max-width: 768px) {
+            .button {
+                width: 150px;
+                height: 60px;
+            }
+
+            .button::before,
+            .button span {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .button {
+                width: 130px;
+                height: 50px;
+            }
+
+            .button::before,
+            .button span {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="button" data-hover="Neon Button">
+            <span>Neon Button</span>
+        </div>
+    </div>
+</body>
+
+</html>
